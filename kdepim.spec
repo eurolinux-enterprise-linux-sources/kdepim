@@ -6,7 +6,7 @@ Name: kdepim
 Summary: PIM (Personal Information Manager) applications
 Epoch: 6
 Version: 4.3.4
-Release: 5%{?dist}
+Release: 6%{?dist}
 
 License: GPLv2
 Group: Applications/Productivity
@@ -27,6 +27,8 @@ Provides: kdepim4 = %{version}-%{release}
 
 Requires: %{name}-libs%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 
+# for kio_smtp plain/login sasl plugins
+Requires: cyrus-sasl-plain
 
 BuildRequires: akonadi-devel
 BuildRequires: bison flex
@@ -208,6 +210,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Aug 23 2012 Than Ngo <than@redhat.com> - 6:4.3.4-6
+- Resolves: bz#811125, cyrus-sasl-plain is needed for kio_smtp plain/login sasl plugins
+
 * Tue Mar 30 2010 Than Ngo <than@redhat.com> - 6:4.3.4-5
 - rebuilt against qt 4.6.2
 
