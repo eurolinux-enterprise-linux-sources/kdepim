@@ -1,0 +1,567 @@
+<ui version="4.0" >
+ <class>KOEditorAlarms_base</class>
+ <widget class="QWidget" name="KOEditorAlarms_base" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Alarms</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="1" column="0" >
+    <widget class="QGroupBox" name="mTimeGroup" >
+     <property name="title" >
+      <string>Time</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QSpinBox" name="mAlarmOffset" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>4</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximum" >
+           <number>999999999</number>
+          </property>
+          <property name="minimum" >
+           <number>1</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="mOffsetUnit" >
+          <item>
+           <property name="text" >
+            <string comment="@item:inlistbox alarm offset expressed in minutes">Minutes</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string comment="@item:inlistbox alarm offset expressed in hours">Hours</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string comment="@item:inlistbox alarm offset expressed in days">Days</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="mBeforeAfter" >
+          <item>
+           <property name="text" >
+            <string>Before the Start</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>After the Start</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>Before the End</string>
+           </property>
+          </item>
+          <item>
+           <property name="text" >
+            <string>After the End</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item row="0" column="1" >
+         <widget class="QLabel" name="mHowOftenLabel" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>4</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>&amp;How often:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>mRepeatCount</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2" >
+         <widget class="QSpinBox" name="mRepeatCount" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="suffix" >
+           <string> time(s)</string>
+          </property>
+          <property name="maximum" >
+           <number>500</number>
+          </property>
+          <property name="minimum" >
+           <number>1</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1" >
+         <widget class="QLabel" name="mIntervalLabel" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="text" >
+           <string>&amp;Interval:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>mRepeatInterval</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" >
+         <widget class="QCheckBox" name="mRepeats" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>4</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>&amp;Repeating:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2" >
+         <widget class="QSpinBox" name="mRepeatInterval" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
+          <property name="suffix" >
+           <string comment="@label:spinbox repeat interval expressed in minutes"> Minute(s)</string>
+          </property>
+          <property name="prefix" >
+           <string comment="repeat every X minutes">every </string>
+          </property>
+          <property name="maximum" >
+           <number>999</number>
+          </property>
+          <property name="minimum" >
+           <number>1</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <widget class="QGroupBox" name="mTypeGroup" >
+     <property name="title" >
+      <string>Type</string>
+     </property>
+     <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QGroupBox" name="mAlarmType" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>4</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="title" >
+         <string/>
+        </property>
+        <property name="flat" >
+         <bool>true</bool>
+        </property>
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QRadioButton" name="mTypeDisplayRadio" >
+           <property name="text" >
+            <string>&amp;Display reminder</string>
+           </property>
+           <property name="checked" >
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="mTypeSoundRadio" >
+           <property name="text" >
+            <string>&amp;Sound</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="mTypeAppRadio" >
+           <property name="text" >
+            <string>Application / script</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="mTypeEmailRadio" >
+           <property name="enabled" >
+            <bool>false</bool>
+           </property>
+           <property name="text" >
+            <string>Send email</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType" >
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>21</width>
+             <height>41</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line1" >
+        <property name="frameShape" >
+         <enum>QFrame::VLine</enum>
+        </property>
+        <property name="frameShadow" >
+         <enum>QFrame::Sunken</enum>
+        </property>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QStackedWidget" name="mTypeStack" >
+        <widget class="QWidget" name="WStackPage" >
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="mDisplayTextLabel" >
+            <property name="text" >
+             <string>Reminder &amp;text:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>mDisplayText</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTextEdit" name="mDisplayText" />
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="WStackPage" >
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="mSoundFileLabel" >
+            <property name="text" >
+             <string>Sound &amp;file:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>mSoundFile</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="KUrlRequester" name="mSoundFile" >
+            <property name="filter" >
+             <string>audio/x-wav audio/x-mp3 application/ogg</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>20</width>
+              <height>61</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="WStackPage" >
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="mApplicationLabel" >
+            <property name="text" >
+             <string>&amp;Application / Script:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>mApplication</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="KUrlRequester" name="mApplication" >
+            <property name="filter" >
+             <string>*.*|All files</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="mAppArgumentsLabel" >
+            <property name="text" >
+             <string>Ar&amp;guments:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>mAppArguments</cstring>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="mAppArguments" />
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>20</width>
+              <height>16</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="WStackPage" >
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item row="1" column="0" colspan="2" >
+           <widget class="QLabel" name="mEmailTextLabel" >
+            <property name="text" >
+             <string>&amp;Text of the message:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>mEmailText</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2" >
+           <widget class="QTextEdit" name="mEmailText" />
+          </item>
+          <item row="0" column="1" >
+           <widget class="KPIM::AddresseeLineEdit" name="mEmailAddress" />
+          </item>
+          <item row="0" column="0" >
+           <widget class="QLabel" name="mEmailToLabel" >
+            <property name="text" >
+             <string>&amp;To:</string>
+            </property>
+            <property name="buddy" >
+             <cstring>mEmailAddress</cstring>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <layout class="QGridLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item row="2" column="1" >
+      <widget class="QPushButton" name="mRemoveButton" >
+       <property name="text" >
+        <string>&amp;Remove</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QPushButton" name="mAddButton" >
+       <property name="text" >
+        <string>&amp;Add</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" >
+      <widget class="QPushButton" name="mDuplicateButton" >
+       <property name="text" >
+        <string>D&amp;uplicate</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1" >
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>20</width>
+         <height>60</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item rowspan="4" row="0" column="0" >
+      <widget class="QTreeWidget" name="mAlarmList" >
+       <property name="allColumnsShowFocus" >
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode" >
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="rootIsDecorated" >
+        <bool>false</bool>
+       </property>
+       <column>
+        <property name="text" >
+         <string>Type</string>
+        </property>
+       </column>
+       <column>
+        <property name="text" >
+         <string>Offset</string>
+        </property>
+       </column>
+       <column>
+        <property name="text" >
+         <string>Repeat</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Q3ListView</class>
+   <extends>Q3Frame</extends>
+   <header>q3listview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KPIM::AddresseeLineEdit</class>
+   <extends>KLineEdit</extends>
+   <header>libkdepim/addresseelineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KUrlRequester</class>
+   <extends>QFrame</extends>
+   <header>kurlrequester.h</header>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="global" >addresseelineedit.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>
