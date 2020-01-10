@@ -2,7 +2,7 @@ Name:    kdepim
 Summary: KDE PIM (Personal Information Manager) applications
 Epoch:   7
 Version: 4.10.5
-Release: 1%{?dist}
+Release: 4%{?dist}
 
 License: GPLv2
 URL:     http://www.kde.org/
@@ -237,6 +237,15 @@ fi
 
 
 %changelog
+* Tue Jan 28 2014 Daniel Mach <dmach@redhat.com> - 7:4.10.5-4
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 7:4.10.5-3
+- Mass rebuild 2013-12-27
+
+* Wed Dec 18 2013 Jan Grulich <jgrulich@redhat.com> - 7:4.10.5-2
+- Fix bogus dates (#1043612)
+
 * Wed Jul 03 2013 Than Ngo <than@redhat.com> - 7:4.10.5-1
 - 4.10.5
 
@@ -562,7 +571,7 @@ fi
 * Tue Nov 24 2009 Ben Boeckel <MathStuf@gmail.com> - 4.3.75-0.2.svn1048496
 - Add patch to build kalarm
 
-* Sun Nov 24 2009 Ben Boeckel <MathStuf@gmail.com> - 4.3.75-0.1.svn1048496
+* Tue Nov 24 2009 Ben Boeckel <MathStuf@gmail.com> - 4.3.75-0.1.svn1048496
 - Update to 4.3.75 snapshot
 
 * Mon Nov 23 2009 Rex Dieter <rdieter@fedoraproject.org> - 4.3.3-3
@@ -805,7 +814,7 @@ fi
 * Wed Nov 28 2007 Rex Dieter <rdieter[AT]fedoraproject.org> 6:3.5.8-8.20071127.ent
 - include/reference kdepim-enterprise-svn_checkout.sh
 
-* Mon Nov 27 2007 Rex Dieter <rdieter[AT]fedoraproject.org> 6:3.5.8-7.20071127.ent
+* Tue Nov 27 2007 Rex Dieter <rdieter[AT]fedoraproject.org> 6:3.5.8-7.20071127.ent
 - kdepim-enterprise branch 20071127 snapshot, r742277 (rh#401391, kde#152553)
 
 * Thu Nov 22 2007 Kevin Kofler <Kevin@tigcc.ticalc.org> - 6:3.5.8-6.20071013.ent
@@ -814,7 +823,7 @@ fi
 * Tue Nov 06 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.8-5.20071013.ent
 - compacting mbox shows empty folder (kde#146967, rh#352391)
 
-* Wed Oct 26 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.8-4.20071013.ent
+* Fri Oct 26 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.8-4.20071013.ent
 - -libs: Obsoletes: %%name ... to help out multilib upgrades
 
 * Sun Oct 14 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.8-3.20071013.ent
@@ -836,12 +845,12 @@ fi
 * Thu Sep 20 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.7-8.20070920.714749.ent
 - kdepim-enterprise branch 20070920 snapshot (r714749)
 
-* Mon Sep 12 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.7-8
+* Wed Sep 12 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.7-8
 - drop OnlyShowIn=KDE munging
 - update %%description
 - tidy up
 
-* Mon Aug 29 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.7-7
+* Wed Aug 29 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.7-7
 - templates for forwarding do not work with inline mails (kde#140549)
 
 * Mon Aug 20 2007 Rex Dieter <rdieter[AT]fedoraproject.org> - 6:3.5.7-6
@@ -1278,7 +1287,7 @@ fi
 * Mon Feb  5 2001 Bernhard Rosenkraenzer <bero@redhat.com>
 - Update
 
-* Tue Jan 22 2001 Bernhard Rosenkraenzer <bero@redhat.com>
+* Mon Jan 22 2001 Bernhard Rosenkraenzer <bero@redhat.com>
 - Update
 
 * Wed Dec 20 2000 Bernhard Rosenkraenzer <bero@redhat.com>
@@ -1468,7 +1477,7 @@ fi
 * Wed Feb 24 1999 Preston Brown <pbrown@redhat.com>
 - Injected new description and group.
 
-* Mon Feb 07 1999 Preston Brown <pbrown@redhat.com>
+* Sun Feb 07 1999 Preston Brown <pbrown@redhat.com>
 - upgraded to KDE 1.1 final.
 
 * Tue Jan 19 1999 Preston Brown <pbrown@redhat.com>
