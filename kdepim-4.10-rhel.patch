@@ -1,13 +1,14 @@
-diff -up kdepim-4.10.1/CMakeLists.txt.rhel kdepim-4.10.1/CMakeLists.txt
---- kdepim-4.10.1/CMakeLists.txt.rhel	2013-03-01 07:57:28.223637582 +0100
-+++ kdepim-4.10.1/CMakeLists.txt	2013-04-04 17:08:53.921121233 +0200
-@@ -12,7 +12,7 @@ option(KDEPIM_MOBILE_UI "Build UI for mo
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7125773..8836e3f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -12,7 +12,7 @@ option(KDEPIM_MOBILE_UI "Build UI for mobile devices instead of for desktops" FA
  option(KDEPIM_ONLY_KLEO "Only build Kleopatra. This option will build only libkleo and kleopatra" FALSE)
  option(KDEPIM_BUILD_STATIC "Build KDEPIM static." FALSE)
  option(KDEPIM_BUILD_DESKTOP "Build Desktop Applications. Can be deactivated for mobile" TRUE)
 -option(KDEPIM_NO_WEBKIT "Do not use WebKit in the kdepim applications" FALSE)
 +option(KDEPIM_NO_WEBKIT "Do not use WebKit in the kdepim applications" TRUE)
- 
+
  if(KDEPIM_BUILD_STATIC)
    set(LIBRARY_TYPE STATIC)
 @@ -309,7 +309,6 @@ else()
@@ -15,13 +16,13 @@ diff -up kdepim-4.10.1/CMakeLists.txt.rhel kdepim-4.10.1/CMakeLists.txt
      add_subdirectory(runtime)
    endif()
 -  add_subdirectory(templateparser)
- 
+
    if(QGPGME_FOUND)
      if(Boost_TOPOLOGICAL_SORT_DIR)
 @@ -317,14 +316,10 @@ else()
      endif()
    endif()
- 
+
 -  # The following components depend on QGpgME.
 -  set(MESSAGEVIEWER_SUPPORTED TRUE)
 -  add_subdirectory(messageviewer)
@@ -33,13 +34,13 @@ diff -up kdepim-4.10.1/CMakeLists.txt.rhel kdepim-4.10.1/CMakeLists.txt
 +
 +  # The following components depend on QGpgME.
 +  set(MESSAGEVIEWER_SUPPORTED FALSE)
- 
+
    if(KDEPIM_BUILD_MOBILE)
      add_subdirectory(mobile)
-@@ -334,50 +329,22 @@ else()
+@@ -334,50 +329,24 @@ else()
      add_subdirectory(examples)
    endif()
- 
+
 -  # If kmail is compiled, KMAIL_SUPPORTED is true (used in several places)
 -  if(BUILD_kmail)
 -    set(KMAIL_SUPPORTED TRUE)
@@ -48,20 +49,20 @@ diff -up kdepim-4.10.1/CMakeLists.txt.rhel kdepim-4.10.1/CMakeLists.txt
 +  set(BUILD_kmail FALSE)
 +  set(KMAIL_SUPPORTED FALSE)
 +  set(BUILD_knode FALSE)
- 
+
    macro_optional_add_subdirectory(korganizer)
    if(KDEPIM_BUILD_DESKTOP)
      macro_optional_add_subdirectory(akregator)
 -    macro_optional_add_subdirectory(archivemailagent)
 -    macro_optional_add_subdirectory(importwizard)
--    macro_optional_add_subdirectory(kaddressbook)
+     macro_optional_add_subdirectory(kaddressbook)
 -    macro_optional_add_subdirectory(kmailcvt)
      macro_optional_add_subdirectory(knotes)
 -    macro_optional_add_subdirectory(ksendemail)
 -    macro_optional_add_subdirectory(ktnef)
 -    macro_optional_add_subdirectory(mailimporter)
 -    macro_optional_add_subdirectory(pimsettingexporter)
--    macro_optional_add_subdirectory(kalarm)
+     macro_optional_add_subdirectory(kalarm)
 -
 -    if(KDEPIMLIBS_KCAL_LIBRARY)
 -      macro_optional_add_subdirectory(blogilo)
@@ -83,10 +84,10 @@ diff -up kdepim-4.10.1/CMakeLists.txt.rhel kdepim-4.10.1/CMakeLists.txt
      endif()
 -    macro_optional_add_subdirectory(kontact) # must be the last one.
    endif()
- 
+
 -  macro_optional_add_subdirectory(akonadiconsole)
    macro_optional_add_subdirectory(console)
 -  macro_optional_add_subdirectory(strigi-analyzer)
- 
+
    # These targets depend on optional applications
    if(KDEPIMLIBS_KRESOURCES_LIBRARY)

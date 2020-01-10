@@ -2,7 +2,7 @@ Name:    kdepim
 Summary: KDE PIM (Personal Information Manager) applications
 Epoch:   7
 Version: 4.10.5
-Release: 6%{?dist}
+Release: 7%{?dist}
 
 License: GPLv2
 URL:     http://www.kde.org/
@@ -175,8 +175,6 @@ fi
 %{_kde4_appsdir}/backupmail/
 %{_kde4_appsdir}/blogilo/
 %{_kde4_appsdir}/desktoptheme/default/widgets/*
-%{_kde4_appsdir}/kaddressbook/
-%{_kde4_appsdir}/kalarm/
 %{_kde4_appsdir}/kjots/
 %{_kde4_appsdir}/kleopatra/
 %{_kde4_appsdir}/kmail/
@@ -187,6 +185,8 @@ fi
 %{_kde4_appsdir}/libmessageviewer/
 %{_kde4_appsdir}/messageviewer/
 %endif
+%{_kde4_appsdir}/kalarm/
+%{_kde4_appsdir}/kaddressbook/
 %{_kde4_appsdir}/kmail2/
 %{_kde4_appsdir}/knode/
 %{_kde4_appsdir}/messagelist/
@@ -211,12 +211,12 @@ fi
 %{_kde4_datadir}/ontology/kde/messagetag.*
 %{_kde4_iconsdir}/hicolor/*/*/*
 %{_kde4_iconsdir}/oxygen/*/*/*
-%if 0%{?fedora}
-%{_kde4_iconsdir}/locolor/*/*/*
 %{_sysconfdir}/dbus-1/system.d/org.kde.kalarmrtcwake.conf
 %{_kde4_libexecdir}/kalarm_helper
 %{_datadir}/dbus-1/system-services/org.kde.kalarmrtcwake.service
 %{_datadir}/polkit-1/actions/org.kde.kalarmrtcwake.policy
+%if 0%{?fedora}
+%{_kde4_iconsdir}/locolor/*/*/*
 %endif
 %{_kde4_datadir}/kde4/services/*
 %{_kde4_datadir}/kde4/servicetypes/*.desktop
@@ -239,6 +239,11 @@ fi
 
 
 %changelog
+* Fri Sep 08 2017 Jan Grulich <jgrulich@redhat.com> - 7:4.10.5-7
+- Include KAddressbook and KAlarm
+  Resolves: bz#1069851
+  Resolves: bz#1389041
+
 * Tue May 17 2016 Jan Grulich <jgrulich@redhat.com> - 7:4.10.5-6
 - Fix required versions of kate and kde-runtime
   Resolves: bz#1060378
