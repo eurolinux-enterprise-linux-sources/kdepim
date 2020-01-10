@@ -1,0 +1,13 @@
+diff --git a/knotes/knote.cpp b/knotes/knote.cpp
+index 8f8e3f6..9bf6499 100644
+--- a/knotes/knote.cpp
++++ b/knotes/knote.cpp
+@@ -751,7 +751,7 @@ void KNote::createNoteHeader()
+                                         // action menu )
+   setName( m_journal->summary() );      // don't worry, no signals are
+                                         // connected at this stage yet
+-  m_button = new KNoteButton( "knotes_close", this );
++  m_button = new KNoteButton( "application-exit", this );
+   headerLayout->addWidget( m_button );
+ 
+   connect( m_button, SIGNAL(clicked()), this, SLOT(slotClose()) );

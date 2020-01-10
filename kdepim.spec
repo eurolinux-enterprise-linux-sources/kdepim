@@ -2,7 +2,7 @@ Name:    kdepim
 Summary: KDE PIM (Personal Information Manager) applications
 Epoch:   7
 Version: 4.10.5
-Release: 4%{?dist}
+Release: 6%{?dist}
 
 License: GPLv2
 URL:     http://www.kde.org/
@@ -17,6 +17,7 @@ Source0: http://download.kde.org/%{stable}/%{version}/src/%{name}-%{version}.tar
 # revert http://websvn.kde.org/?view=revision&revision=1072331 (rebased to 4.6)
 Patch0:  kdepim-4.9.95-install_headers.patch
 Patch1:  kdepim-4.10-strict-aliasing.patch
+Patch2:  kdepim-4.10-use-better-close-icon-for-knotes.patch
 
 # upstream patches
 
@@ -27,8 +28,8 @@ Patch400: kdepim-4.10-rhel.patch
 Provides: kdepim4 = %{version}-%{release}
 
 Requires: %{name}-libs%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
-Requires: kde-runtime%{?_kde4_version: >= %{_kde4_version}}
-Requires: kate-part%{?_kde4_version: >= %{_kde4_version}}
+Requires: kde-runtime >= 4.10.5
+Requires: kate-part >= 4.10.5
 # beware bootstrapping (ie, build kdepim-runtime first)
 Requires: kdepim4-runtime >= %{version}
 
@@ -40,9 +41,9 @@ BuildRequires: desktop-file-utils
 BuildRequires: gettext
 BuildRequires: gpgme-devel
 BuildRequires: grantlee-devel
-BuildRequires: kdepimlibs-devel >= %{version} 
+BuildRequires: kdepimlibs-devel >= %{version}
 BuildRequires: kde-baseapps-devel >= %{version}
-# FIXME/TODO: make new nepomuk-widgets pkg 
+# FIXME/TODO: make new nepomuk-widgets pkg
 BuildRequires: nepomuk-widgets-devel >= %{version}
 BuildRequires: libassuan-devel
 BuildRequires: pkgconfig(akonadi)
@@ -59,7 +60,7 @@ BuildRequires: python-devel
 BuildRequires: zlib-devel
 
 # kmail searches for gpg instead of gpg2, breaking email encryption
-# http://bugzilla.redhat.com/630249 
+# http://bugzilla.redhat.com/630249
 # TODO: patch to use gpg2 (unconditionally or as in addition to gpg)
 Requires: gnupg
 %if 0%{?fedora}
@@ -101,6 +102,7 @@ Requires: %{name}-libs%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 
 %patch0 -p1 -b .install_headers
 %patch1 -p1 -b .strict-aliasing
+%patch2 -p1 -b .use-better-close-icon-for-knotes
 
 %if 0%{?rhel}
 %patch400 -p1 -b .rhel
@@ -159,8 +161,8 @@ if [ $1 -eq 0 ] ; then
   update-desktop-database -q &> /dev/null ||:
 fi
 
-%files 
-%doc README 
+%files
+%doc README
 %doc COPYING
 %{_kde4_bindir}/*
 %{_kde4_libdir}/kde4/*.so
@@ -237,6 +239,14 @@ fi
 
 
 %changelog
+* Tue May 17 2016 Jan Grulich <jgrulich@redhat.com> - 7:4.10.5-6
+- Fix required versions of kate and kde-runtime
+  Resolves: bz#1060378
+
+* Mon May 02 2016 Jan Grulich <jgrulich@redhat.com> - 7:4.10.5-5
+- Use better close icon for knotes
+  Resolves: bz#1060378
+
 * Tue Jan 28 2014 Daniel Mach <dmach@redhat.com> - 7:4.10.5-4
 - Mass rebuild 2014-01-24
 
